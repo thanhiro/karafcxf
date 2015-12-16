@@ -16,6 +16,7 @@
     <modules>
         <module>rest-example.rest</module>
         <module>rest-example.service.impl</module>
+        <module>rest-example.dsservice.impl</module>
     </modules>
 
     <dependencies>

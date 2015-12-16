@@ -6,6 +6,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="Osmorc" url="file://$PROJECT_DIR$/karafcxf.rest" />
     <file type="Osmorc" url="file://$PROJECT_DIR$/karafcxf.service.impl" />
+    <file type="Osmorc" url="file://$PROJECT_DIR$/rest-example.dsservice.impl" />
     <file type="Osmorc" url="file://$PROJECT_DIR$/rest-example.rest" />
     <file type="Osmorc" url="file://$PROJECT_DIR$/rest-example.service.impl" />
   </component>
