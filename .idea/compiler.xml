@@ -24,8 +24,19 @@
         <processorPath useClasspath="true" />
         <module name="karafcxf.rest" />
         <module name="karafcxf.service.impl" />
+        <module name="rest-example.rest" />
+        <module name="rest-example.service.impl" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="karafcxf" target="1.5" />
+      <module name="karafcxf.kar" target="1.5" />
+      <module name="karafcxf.rest" target="1.5" />
+      <module name="karafcxf.service.impl" target="1.5" />
+      <module name="rest-example" target="1.5" />
+      <module name="rest-example.kar" target="1.5" />
+      <module name="rest-example.rest" target="1.5" />
+      <module name="rest-example.service.impl" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
-
