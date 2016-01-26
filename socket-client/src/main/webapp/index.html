@@ -6,10 +6,31 @@
         type="text/css"/>
 </head>
 <body>
-<main class="container">
+<main class="container" id="msgs">
   <div class="row">
-    <div class="col-md-12" id="msgs">
-      <h2>Tweet stream</h2>
+    <div class="col-md-12">
+      <h2>{{ greeting }}</h2>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Customize title</div>
+        <div class="card-block">
+          <form>
+            <fieldset class="form-group">
+              <label for="name">Name</label>
+              <input v-model="name" type="name" class="form-control" id="name" placeholder="My name">
+            </fieldset>
+          </form>
+          <button type="submit" v-on:click="sendName()"
+                  class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3>Tweets</h3>
       <ul class="list-group messages">
         <li class="list-group-item" v-for="message in messages">
           {{ message.text }}
@@ -19,13 +40,28 @@
   </div>
 </main>
 <script src="//cdn.jsdelivr.net/vue/1.0.15/vue.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fetch/0.11.0/fetch.js"></script>
 <script>
   var sock = new WebSocket('ws://localhost:8181/twiit');
 
   var vm = new Vue({
     el: "#msgs",
     data: {
+      name: '',
+      greeting: 'default title',
       messages: []
+    },
+    methods: {
+      sendName: function() {
+        var self = this;
+        fetch('/cxf/rest-example/hello/' + this.name)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            self.greeting = data.greeting;
+          });
+      }
     }
   });
 

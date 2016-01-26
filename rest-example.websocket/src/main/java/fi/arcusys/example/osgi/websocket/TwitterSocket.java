@@ -10,6 +10,8 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @WebSocket
 public class TwitterSocket {
@@ -36,9 +38,13 @@ public class TwitterSocket {
         this.session = session;
         this.remote = this.session.getRemote();
         LOG.info("WebSocket Connect: {}", session);
+
+        String termStr = Arrays.asList(twitterService.getCurrentTerms())
+                .stream().collect(Collectors.joining(", "));
+
         try {
             this.remote.sendString("{\"text\": \"You are now connected to " +
-                    this.getClass().getName() + "\"}");
+                    this.getClass().getName() + " with terms " + termStr  + "\"}");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,15 +59,4 @@ public class TwitterSocket {
             }
         }
     }
-
-    @OnWebSocketMessage
-    public void onWebSocketText(Session session, String message) {
-        LOG.info("Echoing back text message [{}]", message);
-        try {
-            remote.sendString(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

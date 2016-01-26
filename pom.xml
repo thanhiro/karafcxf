@@ -16,7 +16,6 @@
     <modules>
         <module>rest-example.rest</module>
         <module>rest-example.service.impl</module>
-        <module>rest-example.dsservice.impl</module>
         <module>rest-example.twitterservice.impl</module>
         <module>rest-example.websocket</module>
         <module>socket-client</module>

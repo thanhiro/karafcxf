@@ -6,7 +6,7 @@ public class HelloRestServiceImpl implements HelloRestService {
     private HelloService helloService;
 
     public String getName(String name) {
-        return helloService.sayHello(name);
+        return "{\"greeting\": \"" + helloService.sayHello(name) + "\"}";
     }
 
     public HelloRestServiceImpl() {

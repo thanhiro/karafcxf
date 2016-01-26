@@ -7,11 +7,10 @@
     *`rest-example.service.impl` Blueprint service component 
 
 * Declarative Services (DS)
-    *`rest-example.dsservice` DS service component depending on other DS service (twitterservice)
     *`rest-example.twitterservice.impl` DS service component streaming from Twitter
     *`rest-example.websocket` Jetty WebSocket application streaming from DS twitterservice 
 
-* `socket-client` Static file client app for websocket app above   
+* `socket-client` Static file client app for backend apps above   
 
 
 ##How to set up the env
@@ -26,11 +25,12 @@
         * feature:repo-add cxf 3.1.4
         * feature:install cfx
 
-##Installing bundles
+##Compling bundles
     
 CD to project dir and...
 
-    $ mvn clean package
+    $ mvn clean install
 
-Use Karaf webconsole to install wanted bundles (jars) from Maven target directories.
+
+
 
