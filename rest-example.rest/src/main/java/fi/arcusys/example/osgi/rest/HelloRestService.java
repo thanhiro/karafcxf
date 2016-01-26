@@ -9,6 +9,6 @@ public interface HelloRestService {
 
     @GET
     @Path("/{name}")
-    String handleGet(@PathParam("name") String name);
+    String getName(@PathParam("name") String name);
 
 }

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>Socket demo client</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css"/>
+</head>
+<body>
+<main class="container">
+  <div class="row">
+    <div class="col-md-12" id="msgs">
+      <h2>Tweet stream</h2>
+      <ul class="list-group messages">
+        <li class="list-group-item" v-for="message in messages">
+          {{ message.text }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+<script src="//cdn.jsdelivr.net/vue/1.0.15/vue.min.js"></script>
+<script>
+  var sock = new WebSocket('ws://localhost:8181/twiit');
+
+  var vm = new Vue({
+    el: "#msgs",
+    data: {
+      newMessage: '',
+      messages: []
+    }
+  });
+
+  sock.onmessage = function (e) {
+    var parsedJson = JSON.parse(e.data);
+    vm.messages.push(parsedJson);
+  };
+</script>
+</body>
+</html>

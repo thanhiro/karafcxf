@@ -17,7 +17,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.3.7</version>
+                <version>3.0.1</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -26,6 +26,7 @@
                         <Bundle-Activator>fi.arcusys.example.osgi.service.impl.ServiceActivator</Bundle-Activator>
                         <Export-Package>fi.arcusys.example.osgi.service.impl.*;version=${project.version}</Export-Package>
                         <Import-Package>*</Import-Package>
+                        <Service-Component>*</Service-Component>
                     </instructions>
                 </configuration>
             </plugin>
