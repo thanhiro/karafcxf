@@ -32,7 +32,7 @@ public class TwitterServiceImpl implements TwitterService, ManagedService {
     public static final  String[] DEFAULT_TERMS = new String[]{"angularjs", "reactjs", "es6",
             "javascript", "es2015", "typescript", "vuejs", "cyclejs"};
 
-    BlockingQueue<String> msgQueue = new LinkedBlockingQueue<>(100000);
+    BlockingQueue<String> msgQueue = new LinkedBlockingQueue<>(1000);
     Client hosebirdClient;
 
     @Activate
@@ -88,6 +88,10 @@ public class TwitterServiceImpl implements TwitterService, ManagedService {
     }
 
     private void initTwitterStream() {
+        if (hosebirdClient != null) {
+            hosebirdClient.stop();
+        }
+
         Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
         StatusesFilterEndpoint hosebirdEndpoint = new StatusesFilterEndpoint();
 

@@ -6,7 +6,6 @@ import org.eclipse.jetty.util.log.Logger;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
-import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 
 import java.io.IOException;
@@ -55,7 +54,7 @@ public class TwitterSocket {
                 String json = twitterService.getNext();
                 this.remote.sendString(json);
             } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
     }
